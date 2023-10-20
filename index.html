@@ -13,8 +13,10 @@
       window.$target = document.getElementById("target");
       const worker = new Worker("worker.js");
       window.$worker = worker;
-      worker.onmessage = (evt) => eval(evt.data);
-      worker.postMessage(0);
+      worker.onmessage = () => {
+        worker.onmessage = (evt) => eval(evt.data);
+        worker.postMessage(0);
+      }
     </script>
   </body>
 </html>
