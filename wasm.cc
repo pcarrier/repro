@@ -17,3 +17,7 @@ extern "C" EMSCRIPTEN_KEEPALIVE void loop(int n)
   emscripten_run_script(msg.c_str());
   dump_stack("end");
 }
+
+int main() {
+  emscripten_run_script("self.postMessage(undefined);");
+}
