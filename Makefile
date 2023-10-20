@@ -1,7 +1,10 @@
-.PHONY: serve
+.PHONY: serve deploy
 
 serve: wasm.js
 	python3 -m http.server
+
+deploy: wasm.js
+	rsync -av index.html worker.js wasm.js wasm.wasm horse:web/emscripten/
 
 wasm.js: wasm.cc
 	emcc \
