@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>repro</title>
+  </head>
+  <body>
+    <h1>repro</h1>
+    <div id="target" />
+    <script>
+      window.$target = document.getElementById("target");
+      const worker = new Worker("worker.js");
+      window.$worker = worker;
+      worker.onmessage = (evt) => eval(evt.data);
+      worker.postMessage(0);
+    </script>
+  </body>
+</html>
