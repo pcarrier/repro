@@ -9,7 +9,7 @@ deploy: wasm.js
 wasm.js: wasm.cc
 	emcc \
 		-sALLOW_MEMORY_GROWTH=1 \
-		-sSTACK_SIZE=64KB \
+		-sSTACK_SIZE=16KB \
 		-sEXPORTED_RUNTIME_METHODS=cwrap \
-		-g3 \
+		-Os -flto \
 		$< -o $@

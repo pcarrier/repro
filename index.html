@@ -15,7 +15,7 @@
       window.$worker = worker;
       worker.onmessage = () => {
         worker.onmessage = (evt) => eval(evt.data);
-        worker.postMessage([0, 'hello']);
+        worker.postMessage([0, 'hello world']);
       }
     </script>
   </body>
